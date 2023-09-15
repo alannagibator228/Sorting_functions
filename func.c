@@ -2,14 +2,7 @@
 #include <string.h>
 #include "func.h"
 
-void swap_string (char*** array, int element_1, int element_2)
-{
-    char* point = (*array)[element_1];
-    (*array)[element_1] = (*array)[element_2];
-    (*array)[element_2] = point;
-}
-
-void swap_number (int**  array, int element_1, int element_2)
+void swap (int**  array, int element_1, int element_2)
 {
     int number = (*array)[element_1];
     (*array)[element_1] = (*array)[element_2];
@@ -18,9 +11,9 @@ void swap_number (int**  array, int element_1, int element_2)
 
 /////////////////////////////////////////////////////////////
 
-void boble_sort_numbers (int** array, int length)
+void boble_sort (int** array, int length)
 {
-    int num_of_cmp = 0;
+    int num_of_cmp;
     for (int run = 0; run < length -1; run++)
     {
         num_of_cmp = 0;
@@ -28,7 +21,7 @@ void boble_sort_numbers (int** array, int length)
         {
             if ((*array)[num_cmp] > (*array)[num_cmp + 1])
             {
-                swap_number(array, num_cmp, num_cmp + 1);
+                swap(array, num_cmp, num_cmp + 1);
                 num_of_cmp = 1;
             }
         } 
@@ -40,24 +33,19 @@ void boble_sort_numbers (int** array, int length)
     }
 }
 
-void boble_sort_strings (char*** array, int length)
+void selection_sort (int** array, int length)
 {
-    int num_of_cmp = 0;
-    for (int run = 0; run < length -1; run++)
+    int index_min;
+    for (int index = 0; index < length; index++)
     {
-        num_of_cmp = 0;
-        for (int num_cmp = 0; num_cmp< length - run - 1; num_cmp++)
+        index_min = index;
+        for (int num = index; num < length; num ++)
         {
-            if ((*array)[num_cmp] > (*array)[num_cmp + 1])
+            if ((*array)[index_min] > (*array)[num])
             {
-                swap_string(array, num_cmp, num_cmp + 1);
-                num_of_cmp = 1;
+                index_min = num;
             }
-        } 
-
-        if (num_of_cmp == 0)
-        {
-            break;
         }
+        swap(array, index_min, index);
     }
 }

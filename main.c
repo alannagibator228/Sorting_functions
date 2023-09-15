@@ -13,16 +13,16 @@ int main()
     array[2] = 7;
     array[3] = 5;
     array[4] = 4;
-    array[5] = 8;
-    array[6] = 1;
+    array[5] = 1;
+    array[6] = 8;
     array[7] = 2;
     array[8] = 10;
     array[9] = 9;
 
-    boble_sort_numbers (&array, length);
+    selection_sort (&array, length);
     for (int i = 0; i < length; i++)
     {
-        printf("%d\n", array[i]);
+        printf("%d ", array[i]);
     }
 
     printf("Иди нахуй\n");
